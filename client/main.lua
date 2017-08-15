@@ -38,11 +38,11 @@ function OpenShopMenu()
 		ESX.UI.Menu.Open(
 			'default', GetCurrentResourceName(), 'shop_confirm',
 			{
-				title = 'Valider cet achat ?',
+				title = _U('valid_purchase'),
 				align = 'top-left',
 				elements = {
-					{label = 'Oui', value = 'yes'},
-					{label = 'Non', value = 'no'},
+					{label = _U('yes'), value = 'yes'},
+					{label = _U('no'), value = 'no'},
 				}
 			},
 			function(data, menu)
@@ -67,7 +67,7 @@ function OpenShopMenu()
 								TriggerEvent('skinchanger:loadSkin', skin)
 							end)
 
-							ESX.ShowNotification('Vous n\'avez pas assez d\'argent')
+							ESX.ShowNotification(_U('not_enough_money'))
 						
 						end
 
@@ -84,7 +84,7 @@ function OpenShopMenu()
 				end
 
 				CurrentAction     = 'shop_menu'
-				CurrentActionMsg  = 'Appuez sur ~INPUT_CONTEXT~ pour accéder au menu'
+				CurrentActionMsg  = _U('press_access')
 				CurrentActionData = {}
 
 			end,
@@ -93,7 +93,7 @@ function OpenShopMenu()
 				menu.close()
 
 				CurrentAction     = 'shop_menu'
-				CurrentActionMsg  = 'Appuez sur ~INPUT_CONTEXT~ pour accéder au menu'
+				CurrentActionMsg  = _U('press_access')
 				CurrentActionData = {}
 
 			end
@@ -104,7 +104,7 @@ function OpenShopMenu()
 			menu.close()
 
 			CurrentAction     = 'shop_menu'
-			CurrentActionMsg  = 'Appuez sur ~INPUT_CONTEXT~ pour accéder au menu'
+			CurrentActionMsg  = _U('press_access')
 			CurrentActionData = {}
 
 	end, {
@@ -116,7 +116,7 @@ end
 
 AddEventHandler('esx_mask:hasEnteredMarker', function(zone)
 	CurrentAction     = 'shop_menu'
-	CurrentActionMsg  = 'Appuez sur ~INPUT_CONTEXT~ pour accéder au menu'
+	CurrentActionMsg  = _U('press_access')
 	CurrentActionData = {}
 end)
 
@@ -138,7 +138,7 @@ Citizen.CreateThread(function()
 		SetBlipAsShortRange(blip, true)
 
 		BeginTextCommandSetBlipName("STRING")
-		AddTextComponentString("Masques")
+		AddTextComponentString(_U('masks_blip'))
 		EndTextCommandSetBlipName(blip)
 	end
 
@@ -244,7 +244,7 @@ Citizen.CreateThread(function()
 							})
 						
 						else
-							ESX.ShowNotification('Vous n\'avez pas de masque')
+							ESX.ShowNotification(_U('no_mask'))
 						end
 
 					end)
