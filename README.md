@@ -13,7 +13,8 @@ FXServer ESX Mask
 ```
 git clone https://github.com/FXServer-ESX/fxserver-esx_mask esx_mask
 ```
-3) Add this in your server.cfg :
+3) Import esx_mask.sql in your database
+4) Add this in your server.cfg :
 
 ```
 start esx_mask
