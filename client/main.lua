@@ -239,7 +239,7 @@ Citizen.CreateThread(function()
 
 			if UseMask then
 
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
+				TriggerEvent('skinchanger:getSkin', function(skin)
 
 					TriggerEvent('skinchanger:loadClothes', skin, {
 						mask_1 = 0,
@@ -250,15 +250,15 @@ Citizen.CreateThread(function()
 
 			else
 
-				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(playerSkin)
+				TriggerEvent('skinchanger:getSkin', function(skin)
 
-					ESX.TriggerServerCallback('esx_mask:getMask', function(hasMask, skin)
+					ESX.TriggerServerCallback('esx_mask:getMask', function(hasMask, maskSkin)
 
 						if hasMask then
 
-							TriggerEvent('skinchanger:loadClothes', playerSkin, {
-								mask_1 = skin.mask_1,
-								mask_2 = skin.mask_2
+							TriggerEvent('skinchanger:loadClothes', skin, {
+								mask_1 = maskSkin.mask_1,
+								mask_2 = maskSkin.mask_2
 							})
 						
 						else
