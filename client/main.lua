@@ -19,6 +19,7 @@ local CurrentAction           = nil
 local CurrentActionMsg        = ''
 local CurrentActionData       = {}
 local UseMask                 = false
+local IsDead                  = false
 
 Citizen.CreateThread(function()
 
@@ -113,6 +114,22 @@ function OpenShopMenu()
 	})
 
 end
+
+AddEventHandler('playerSpawned', function()
+	IsDead = false
+end)
+
+AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
+	TriggerEvent('esx_ambulancejob:onPlayerDeath')
+end)
+
+AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
+	TriggerEvent('esx_ambulancejob:onPlayerDeath')
+end)
+
+AddEventHandler('esx_ambulancejob:onPlayerDeath', function()
+	IsDead = true
+end)
 
 AddEventHandler('esx_mask:hasEnteredMarker', function(zone)
 	CurrentAction     = 'shop_menu'
@@ -218,8 +235,8 @@ Citizen.CreateThread(function()
 
 		end
 
-		if IsControlPressed(0,  Keys['LEFTSHIFT']) and IsControlPressed(0,  Keys['M']) and (GetGameTimer() - GUI.Time) > 300 then
-			
+		if IsControlPressed(0,  Keys['LEFTSHIFT']) and IsControlPressed(0,  Keys['M']) and not IsDead and (GetGameTimer() - GUI.Time) > 300 then
+
 			if UseMask then
 
 				ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
