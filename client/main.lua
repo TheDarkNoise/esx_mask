@@ -260,6 +260,11 @@ Citizen.CreateThread(function()
 								mask_1 = maskSkin.mask_1,
 								mask_2 = maskSkin.mask_2
 							})
+
+                            local player = GetPlayerPed(-1)
+                            SetPedPropIndex(player, 1, 0, 0, 0)
+                            SetPedPropIndex(player, 2, -1, 0, 0)
+                            ClearPedProp(player, 0)
 						
 						else
 							ESX.ShowNotification(_U('no_mask'))
