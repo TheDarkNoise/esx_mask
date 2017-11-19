@@ -1,6 +1,10 @@
 # fxserver-esx_mask
 FXServer ESX Mask
 
+[AN IMPROVED VERSION HERE]
+With hats and glasses too.
+https://github.com/ESX-Org/esx_accessories
+
 [REQUIREMENTS]
 
 - esx_skin => https://github.com/FXServer-ESX/fxserver-esx_skin
