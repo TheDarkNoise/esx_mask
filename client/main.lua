@@ -119,15 +119,7 @@ AddEventHandler('playerSpawned', function()
 	IsDead = false
 end)
 
-AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
-	TriggerEvent('esx_ambulancejob:onPlayerDeath')
-end)
-
-AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
-	TriggerEvent('esx_ambulancejob:onPlayerDeath')
-end)
-
-AddEventHandler('esx_ambulancejob:onPlayerDeath', function()
+AddEventHandler('esx:onPlayerDeath', function()
 	IsDead = true
 end)
 
@@ -166,7 +158,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		
-		Wait(0)
+		Citizen.Wait(0)
 		
 		local coords = GetEntityCoords(GetPlayerPed(-1))
 		
@@ -183,7 +175,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		
-		Wait(0)
+		Citizen.Wait(10)
 		
 		local coords      = GetEntityCoords(GetPlayerPed(-1))
 		local isInMarker  = false
@@ -214,7 +206,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 
-		Citizen.Wait(0)
+		Citizen.Wait(10)
 
 		if CurrentAction ~= nil then
 
