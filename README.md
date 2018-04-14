@@ -1,5 +1,4 @@
-# fxserver-esx_mask
-FXServer ESX Mask
+# esx_mask
 
 [AN IMPROVED VERSION HERE]
 With hats and glasses too.
